@@ -60,8 +60,8 @@ class CloudflareAiWorker
 
         // Menyiapkan data JSON untuk permintaan
         $data = json_encode($this->stream
-            ? ['prompt' => $messages, 'stream' => true]
-            : ['messages' => $messages]
+            ? ['prompt' => $messages, 'stream' => true] // Data untuk streaming
+            : ['messages' => $messages] // Data untuk non-streaming
         );
 
         // Mengatur opsi cURL untuk streaming atau non-streaming
@@ -96,5 +96,11 @@ class CloudflareAiWorker
 
         // Jika tidak streaming, kembalikan hasil sebagai array
         return !$this->stream ? json_decode($response, true) : null;
+    }
+
+    // Fungsi untuk mendapatkan status stream
+    public function getStream()
+    {
+        return $this->stream;
     }
 }
