@@ -17,10 +17,10 @@ To get started, you can install the package via Composer.
    composer require clouddark/cloudflare-ai-worker-php:dev-main
    ```
 
-2. Install dependencies using Composer:
+2. Upgrade dependencies using Composer:
 
    ```bash
-   composer install
+   composer upgrade && composer update
    ```
 
    This will install the necessary dependencies and set up the autoloader.
