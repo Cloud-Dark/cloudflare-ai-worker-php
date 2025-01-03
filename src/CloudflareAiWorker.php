@@ -5,13 +5,15 @@ namespace CloudDark;
 class CloudflareAiWorker
 {
     private $url;
+    private $accountId; // Menyimpan account ID secara terpisah dari token
     private $token;
     private $model;
 
-    // Konstruktor untuk mengatur URL API, token (API key), dan model
-    public function __construct($url, $token, $model)
+    // Konstruktor untuk mengatur URL API, token (API key), accountId, dan model
+    public function __construct($url, $accountId, $token, $model)
     {
         $this->url = rtrim($url, '/'); // Pastikan URL tidak memiliki slash di akhir
+        $this->accountId = $accountId; // Account ID disertakan terpisah
         $this->token = $token;
         $this->model = $model;
     }
@@ -39,8 +41,8 @@ class CloudflareAiWorker
     {
         $ch = curl_init();
 
-        // Menyusun URL permintaan dengan model
-        $endpoint = "{$this->url}/accounts/{$this->token}/ai/run/{$this->model}";
+        // Menyusun URL permintaan dengan model dan account_id
+        $endpoint = "{$this->url}/client/v4/accounts/{$this->accountId}/ai/run/{$this->model}";
 
         // Menyiapkan data JSON untuk permintaan
         $data = json_encode([
