@@ -1,0 +1,16 @@
+{
+    "name": "clouddark/cloudflare-ai-worker-php",
+    "description": "A PHP library to interact with Cloudflare AI Workers or other AI models.",
+    "type": "library",
+    "autoload": {
+      "psr-4": {
+        "CloudDark\\": "src/"
+      }
+    },
+    "require": {
+      "php": "^7.4|^8.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+  }
+  
